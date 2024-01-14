@@ -1,23 +1,39 @@
 
 ### Spring Batch 5.0 Migration Guide (spring-projects)
 
-```html
-JobBuilderFactory and StepBuilderFactory bean exposure/configuration
-JobBuilderFactory and StepBuilderFactory are not exposed as beans in the application context anymore, and are now deprecated for removal in v5.2 in favor of using the respective builders they create.
-```
-
 https://github.com/spring-projects/spring-batch/wiki/Spring-Batch-5.0-Migration-Guide
 
 ---
 
-### REGISTERED JOB, STEP, TASKLET BY AS SPRING BEAN. <br/>
-BUT, NOT WORK TASKLET
+program arguments
+
+```
+--job.name=validatedParamJob fileName=test.csv
+```
+
+---
+
+## Spring Batch Error Collections.
+
+### 1. REGISTERED JOB, STEP, TASKLET BY AS SPRING BEAN. BUT, NOT WORK TASKLET
+
+- Job, Step, Tasklet 이 빈으로 등록되었지만 Job 이 실행되지 않는 문제
 
 https://stackoverflow.com/questions/75287102/spring-batch-5-0-with-spring-boot-tasklet-job-not-starting-automatically
 
 ---
 
-<img width="553" alt="image" src="https://github.com/ahn-sj/spring-batch-tutorial/assets/64416833/1c8bee21-4efa-4910-9aed-58bf4bfc9919">
+### 2. JobParameter 사용 시 null 이 담기는 문제
+
+JobParameter 는 Spring Batch 를 실행할 때 내외부에서 받는 파라미터를 뜻하고, JobScope 또는 StepScope 애너테이션이 필요 
+
+https://oingdaddy.tistory.com/417
+
+<br/>
+
+추가적으로 발생 가능한 원인) Configuration <> Component
+
+https://oingdaddy.tistory.com/417
 
 ---
 
