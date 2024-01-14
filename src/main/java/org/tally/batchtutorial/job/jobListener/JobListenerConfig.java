@@ -36,7 +36,7 @@ public class JobListenerConfig {
     ) {
         return new StepBuilder("jobListenerStep", jobRepository)
                 .tasklet(jobListenerTasklet, transactionManager) // or .chunk(chunkSize, transactionManager)
-                .allowStartIfComplete(true)
+//                .allowStartIfComplete(true)
                 .build();
     }
 
