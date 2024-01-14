@@ -37,6 +37,37 @@ https://oingdaddy.tistory.com/417
 
 ---
 
+### 3. 배치1 - 성공, 배치2 - 실패 에 대한걸 두번 테스트 하다가 발생한 상황
+
+```
+Step already complete or not restartable, so no action to execute
+```
+
+위와 같은 내용의 로그가 남았고, 로그 결과로 봤을 때에는 이미 실행되었다는 이유로 Tasklet 이 실행되지 않은걸로 보임<br/>
+나중에 Job과 관련된 것과 메타테이블에 대한 것 학습 필요
+
+해당 경우에도 실행되게 하게끔 옵션 추가함
+```java
+.allowStartIfComplete(true)
+```
+```java
+@Bean
+public Step jobListenerStep(
+        JobRepository jobRepository,
+        Tasklet jobListenerTasklet,
+        PlatformTransactionManager transactionManager
+) {
+    return new StepBuilder("jobListenerStep", jobRepository)
+            .tasklet(jobListenerTasklet, transactionManager) // or .chunk(chunkSize, transactionManager)
+            .allowStartIfComplete(true)
+            .build();
+}
+```
+
+https://stackoverflow.com/questions/63694023/springbatch-step-no-longer-executing-step-already-complete-or-not-restartable
+
+---
+
 REFERENCE
 
 https://europani.github.io/spring/2023/06/26/052-spring-batch-version5.html
