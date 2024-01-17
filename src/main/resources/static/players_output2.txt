@@ -1,0 +1,6 @@
+AbduKa00,Abdul-Jabbar,rb,1996,28
+AbduRa00,Abdullah,rb,1999,25
+AberWa00,Abercrombie,rb,1982,42
+AbraDa00,Abramowicz,wr,1967,57
+AdamBo00,Adams,te,1969,55
+AdamCh00,Adams,wr,2003,21
