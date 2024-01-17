@@ -2,7 +2,7 @@ spring:
   batch:
     job:
       name: ${job.name:NONE}
-      enabled: true
+      enabled: false # spring.batch.job.enabled 가 false 이면 argument 에 job이 있더라도 해당 job을 실행하지 X
     jdbc:
       initialize-schema: always
   datasource:
